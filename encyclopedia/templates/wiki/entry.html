@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block title %}
+    {% if titles == None %}
+        Error 404!
+    {%else%}
+        {{name}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if titles == None %}
+        <h1>Error 404!!!</h1>{{name}} was not found.
+    {% else %}
+        {{titles|safe}}
+        <a href= "{% url 'edit_page' name%}">Edit Page</a>
+    {% endif %}
+{% endblock %}

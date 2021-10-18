@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block title %}
+        Edit {{title}}
+{% endblock %}
+
+{% block body %}
+<!-- form action not required but added for clarity -->
+    <h1><textarea name= "title" form="new_page_form" placeholder="Enter Title" style="height: 60px;resize: none;overflow: hidden;">{{title|safe}}</textarea></h1>
+    <textarea name= "content" form="new_page_form" placeholder="Content" style="height: 500px; resize: none;" >{{content|safe}}</textarea>
+    <form action="{% url 'edit_page' title %}" id = "new_page_form" method="POST" >
+        {% csrf_token %}
+        <input type = "submit" value = "Save" >
+    </form>
+{% endblock %}

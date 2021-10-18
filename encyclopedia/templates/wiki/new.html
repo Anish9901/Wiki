@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if errorcode == 1 %}
+        Error!
+    {%else%}
+        New Page    
+    {% endif %}
+    
+{% endblock %}
+
+{% block body %}
+<!-- form action not required but added for clarity -->
+    {% if errorcode == 1%}
+        <h1>Error {{name}} already exist!!!</h1>
+    {% else %}
+        <h1><textarea name= "title" form="new_page_form" placeholder="Enter Title" style="height: 60px;resize: none;overflow: hidden;"></textarea></h1>
+        <textarea name= "content" form="new_page_form" placeholder="Content" style="height: 500px; resize: none;" ></textarea>
+        <form action="{% url 'new_page' %}" id = "new_page_form" method="POST" >
+            {% csrf_token %}
+            <input type = "submit" value = "Save" >
+        </form>
+    {% endif %}
+    
+    {{debug}}
+{% endblock %}
