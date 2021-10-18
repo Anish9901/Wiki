@@ -1,4 +1,4 @@
-#Wiki
+# Wiki
 
 This is an implementation of a Wiki website in which the pages are stored in a markdown(.md) file.
 
